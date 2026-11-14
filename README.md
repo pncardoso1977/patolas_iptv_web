@@ -11,7 +11,7 @@ Aplicação web responsiva para Chrome e Safari. Esta versão lê uma lista M3U 
 
 ## Limitações importantes
 - Esta versão é para listas M3U de canais. M3U, por si só, não fornece o catálogo Xtream de filmes, séries, temporadas e episódios; por isso essas secções não estão incluídas.
-- O navegador só consegue descarregar a lista se o servidor permitir CORS para o domínio da aplicação. Se não permitir, é necessário um proxy/backend HTTPS autorizado e configurado de forma segura. Esta versão ainda não inclui esse backend.
+- O navegador só consegue descarregar a lista se o servidor permitir CORS para o domínio da aplicação. Se não permitir, é necessário um proxy/backend HTTPS autorizado e configurado de forma segura. Esta versão utiliza o Cloudflare Worker `https://patolasiptv-m3u.pncardoso.workers.dev/` para obter a lista. O Worker tem de estar publicado e configurado para aceitar apenas a origem GitHub Pages indicada.
 - A reprodução depende dos formatos, codecs e políticas CORS do servidor. Chrome e Safari não suportam todos os formatos da mesma forma.
 - O URL M3U pode conter credenciais. Não o publiques em repositórios, capturas de ecrã ou dispositivos partilhados. O armazenamento local é opcional e não é cifrado.
 

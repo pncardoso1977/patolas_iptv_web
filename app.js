@@ -29,7 +29,7 @@
       const url=new URL($('playlistUrl').value.trim());
       if(!['http:','https:'].includes(url.protocol)) throw new Error('O endereço tem de começar por http:// ou https://.');
       state.playlistUrl=url.href;
-      const response=await fetch(state.playlistUrl,{mode:'cors',cache:'no-store'});
+      const response=await fetch('https://patolasiptv-m3u.pncardoso.workers.dev/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:state.playlistUrl}),cache:'no-store'});
       if(!response.ok) throw new Error(`O servidor respondeu com HTTP ${response.status}.`);
       const body=await response.text();
       if(!body.trim().startsWith('#EXTM3U')) throw new Error('A resposta não parece ser uma lista M3U válida (cabeçalho #EXTM3U não encontrado).');
