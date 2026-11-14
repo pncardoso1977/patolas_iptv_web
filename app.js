@@ -178,11 +178,13 @@
       hls.attachMedia(video);
       video.hls = hls;
       hls.on(Hls.Events.ERROR, (_, data) => {
-        if (data.fatal) {
-          $('playerMessage').textContent =
-            'Falha na reprodução. O fornecedor pode bloquear CORS ou este canal pode não estar disponível em HLS.';
-        }
-      });
+  console.error('Erro HLS:', data);
+
+  if (data.fatal) {
+    $('playerMessage').textContent =
+      `Erro HLS: ${data.type} | ${data.details} | ${data.response?.code || 'sem código HTTP'}`;
+  }
+});
     } else {
       video.src = item.url;
     }
